@@ -1,0 +1,68 @@
+% cSpell:ignore bibfile
+
+\documentclass{beamer}
+	
+	\usetheme[
+		progressbar=frametitle,
+		titleformat section=smallcaps
+	]{metropolis}
+
+	\input{cli}
+
+	\input{version}
+
+	\input{packages}
+
+	\input{settings}
+
+	\input{definitions}
+
+\begin{document}
+
+	\maketitle
+
+	\begin{frame}{Table of Contents}
+		
+		\begin{multicols}{2}
+
+			\tableofcontents
+
+		\end{multicols}
+		
+		\note{
+			\begin{itemize}
+				\item 
+					Start with the problem statement.
+					What an ORAM is and why we need it.
+				\item
+					Talk about what ORAMs are already there and what their disadvantages are.
+				\item
+					Then go in the same order as paper goes.
+			\end{itemize}
+		}
+	\end{frame}
+
+	\input{sections/oblivious-memory}
+	\input{sections/overview-of-other-orams}
+	\input{sections/problem-definition}
+	\input{sections/path-oram-protocol}
+	\input{sections/example}
+	\input{sections/recursion-and-parametrization}
+	\input{sections/bounds-on-stash-usage}
+	\input{sections/evaluation}
+	\input{sections/applications-and-extensions}
+	\input{sections/conclusion}
+
+	\maketitle
+	
+	\begin{frame}[allowframebreaks]{References}
+		
+		\printbibliography%
+
+	\end{frame}
+
+	\appendix
+
+	\input{sections/appendix}
+	
+\end{document}

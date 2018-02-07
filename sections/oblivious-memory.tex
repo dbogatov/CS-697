@@ -1,0 +1,82 @@
+% cSpell:ignore bibfile Goldreich Dautrich
+
+\section{Oblivious Memory}
+
+	\begin{frame}{Problem statement}
+		
+		Untrusted server.
+		Secure database --- each record is encrypted.
+		What are we missing?
+
+		\pause%
+
+		\begin{alertblock}{Security vulnerability}
+			Adversary still sees the \textbf{access pattern} --- an ordered sequence of read/write operations on data records.
+		\end{alertblock}
+
+		\begin{exampleblock}{Attack example}
+			Compromising Privacy in Precise Query Protocols~\cite{Dautrich:2013:CPP:2452376.2452397}.
+			Observe range queries to recover order.
+			Requires $10^4$ queries to compromise privacy for database of over $10^6$ records.
+		\end{exampleblock}
+
+		\note{
+			The idea is to build a secure cloud, and more specifically --- secure database.
+			The server is untrusted --- we assume an adversary can read every byte on the disk and track all CPU operations, but cannot interfere.
+			This threat model is called \emph{honest-but-curious} adversary.
+			The first step is encrypting the database, so that only client can decrypt.
+			But that is just the first step --- what are we missing?
+
+			An adversary can see the access pattern.
+			It can see which records are accessed more often.
+			Which records are accessed only after some other records were touched.
+			How often read vs write operations occur.
+
+			Talk about~\textcite{Dautrich:2013:CPP:2452376.2452397} paper.
+		}
+	\end{frame}
+
+	\begin{frame}{Oblivious RAM}
+
+		\begin{block}{Definition}
+			A machine is \emph{oblivious} if the sequence in which it accesses memory locations is equivalent for any two inputs with the same running time~\cite{Goldreich:1996:SPS:233551.233553}.
+		\end{block}
+
+		\note{
+			A solution is to design an oblivious memory access system.
+			This definition of oblivious machine is cited from the original paper on ORAMs by \textcite{Goldreich:1996:SPS:233551.233553} from May 1996 --- around my birthday.
+			Among the other things the paper states a number of theorems on computational bounds of generic ORAMs.
+
+			Although the paper analyzes generic ORAMs, 20 years ago people were more concerned about CPU working with RAM access patterns.
+			The cloud did not really exist at that time.
+
+			So the one purpose of ORAM is to hide the access pattern.
+			We will come to more formal security definition in a couple of slides.
+		}
+	\end{frame}
+
+	\begin{frame}{Theoretical bounds}
+		
+		\begin{block}{Theorems}
+			Let $\RAM(m)$ denote a \RAM\ with $m$ memory locations and access to a random oracle.
+			Then $t$ steps of an arbitrary $\RAM(m)$ can be simulated by
+			\begin{itemize}
+				\item
+					at most $\BigO{t \cdot (\log_2 t)^3}$ steps of an oblivious $\RAM(m \cdot (\log_2 m)^2 )$
+				\item
+					at least $\max \{ m, (t-1) \cdot \log_2 m \}$ steps of an oblivious $\RAM(m)$
+			\end{itemize}
+
+			\cite{Goldreich:1996:SPS:233551.233553} % chktex 2
+
+		\end{block}
+		
+		\note{
+			These are some theorems stated and proved in the paper.
+			I am not going to do proofs here.
+			The idea is that these are the theoretical bounds for generic ORAMs.
+			Designing our own ORAM the aim is to come as close as possible to lower bounds.
+			
+			In fact, PathORAM does hit the lower bound --- $\log m$ steps per each access.
+		}
+	\end{frame}

@@ -1,0 +1,21 @@
+% cSpell:disable
+
+% CLI arguments
+
+\newif\ifrelease%
+
+\ifdefined\debug%
+	\releasefalse%
+\else
+	\releasetrue%
+\fi
+
+\ifnum\pdfstrcmp{\generatenotes}{on}=0%
+	\newcommand{\notesOption}{show notes on second screen}%
+\else%
+	\ifnum\pdfstrcmp{\generatenotes}{only}=0%
+		\newcommand{\notesOption}{show only notes}%
+	\else%
+		\newcommand{\notesOption}{hide notes}%
+	\fi%
+\fi%

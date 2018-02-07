@@ -1,0 +1,90 @@
+% cSpell:disable
+
+\newfontfamily{\FA}[Path = fonts/]{FontAwesome.otf}
+
+\setbeameroption{\notesOption}
+
+\title{Data-X Talk} % chktex 13
+
+\subtitle{
+	Path ORAM:\ An Extremely Simple Oblivious RAM Protocol \\
+	{\small by \emph{Emil Stefanov}, \emph{Elaine Shi}, \emph{Marten van Dijk}, \emph{Christopher Fletcher}, \emph{	Ling Ren}, \emph{Xiangyao Yu} and \emph{Srinivas Devadas}} \\
+	\cite{Stefanov:2013:POE:2508859.2516660} % chktex 2
+}
+
+\date{Built from \href{https://git.dbogatov.org/bu/PathORAM-Talk/commit/\version}{\emph{\version}} on \today}
+
+\author{Dmytro Bogatov \\ dmytro@bu.edu}
+
+\institute{Boston University}
+
+\ifrelease%
+	\logo{
+		\includegraphics[
+			width=1cm,
+			height=1cm,
+			keepaspectratio
+		]{static/logo.eps}\hspace{325pt}\vspace{-30pt}
+	}
+\fi
+
+\addbibresource{bibfile.bib}
+
+\makeatletter
+	\def\beamer@framenotesbegin{% at beginning of slide
+		\usebeamercolor[fg]{normal text} 
+			\gdef\beamer@noteitems{}%
+			\gdef\beamer@notes{}% 
+	}
+\makeatother
+
+\lstset{
+	mathescape=true,
+	numbers=left,
+	tabsize=4,
+	numbersep=10pt,
+	breaklines=true,
+	showtabs=false,
+	morekeywords={for,end,do,while,if,then,else,Applies,when,return,true,false,Action},
+	basicstyle=\normalfont,
+	columns=fullflexible,
+	frame=leftline,
+	xleftmargin=15pt,
+	escapechar=|
+}
+
+\hypersetup{
+	pdfcopyright={Copyright (C) Dmytro Bogatov \the\year. Creative Commons Attribution-NoDerivatives 4.0 International.},
+	pdflicenseurl={https://creativecommons.org/licenses/by-nd/4.0/legalcode},
+	pdfauthor={Dmytro Bogatov},
+	pdftitle={Data-X Talk},
+	pdfsubject={Path ORAM:\ An Extremely Simple Oblivious RAM Protocol},
+	pdfkeywords={Data-X, Talk, ORAM, PathORAM, Oblivious, Security, Kollios, BU, PhD, homework},
+	colorlinks=true,
+	linkcolor=magenta,
+	urlcolor=cyan,
+	citecolor=blue,
+	pdfpagemode=FullScreen,
+	pdfdisplaydoctitle=true,
+	pdfmenubar=false,
+	pdfpagelayout=SinglePage
+}
+
+\captionsetup[figure]{labelformat=empty}
+
+\definecolor{CardinalRed}{RGB}{172,29,55} 
+\definecolor{Tangerine}{RGB}{247,148,30} 
+
+\setbeamercolor{alerted text}{fg=CardinalRed}
+\setbeamercolor{example text}{fg=Tangerine}
+{
+	\usebeamercolor[fg]{alerted text}
+	\usebeamercolor[fg]{example text}
+}
+
+\usetikzlibrary{
+    shapes.geometric,
+    positioning,
+    fit,
+    calc
+}
