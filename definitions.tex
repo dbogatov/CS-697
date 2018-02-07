@@ -31,3 +31,13 @@
 \makeatletter
 	\newcommand{\manuallabel}[2]{\def\@currentlabel{#2}\label{#1}} % chktex 21
 \makeatother
+
+\newcommand\blfootnote[1]{%
+	\begingroup
+	\renewcommand\thefootnote{}\footnote{#1}%
+	\addtocounter{footnote}{-1}%
+	\endgroup
+}
+
+\newcommand\Fontvi{\fontsize{6}{7.2}\selectfont}
+
