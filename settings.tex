@@ -17,22 +17,22 @@
 \ifrelease%
 	\logo{
 		\includegraphics[
-			width=1cm,
-			height=1cm,
+			width=0.5cm,
+			height=0.5cm,
 			keepaspectratio
-		]{static/logo.eps}\hspace{325pt}\vspace{-30pt}
+		]{static/logo.eps}\hspace{335pt}\vspace{-30pt}
 	}
 \fi
 
 \addbibresource{bibfile.bib}
 
-\makeatletter
-	\def\beamer@framenotesbegin{% at beginning of slide
-		\usebeamercolor[fg]{normal text} 
-			\gdef\beamer@noteitems{}%
-			\gdef\beamer@notes{}% 
-	}
-\makeatother
+% \makeatletter
+% 	\def\beamer@framenotesbegin{% at beginning of slide
+% 		\usebeamercolor[fg]{normal text} 
+% 			\gdef\beamer@noteitems{}%
+% 			\gdef\beamer@notes{}% 
+% 	}
+% \makeatother
 
 \lstset{
 	mathescape=true,
